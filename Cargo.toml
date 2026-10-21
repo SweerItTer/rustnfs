@@ -1,0 +1,77 @@
+[package]
+name = "rustnfs"
+version = "0.1.2"
+edition = "2024"
+rust-version = "1.88"
+description = "A lightweight Windows NFSv3 server for development networks"
+license = "MIT"
+default-run = "rustnfsd"
+
+[workspace]
+members = ["vendor/nfs3_server", "vendor/nfs3_types", "vendor/nfs3_macros"]
+resolver = "3"
+
+[workspace.package]
+authors = ["Vaiz"]
+rust-version = "1.88"
+edition = "2024"
+homepage = "https://github.com/Vaiz/nfs3"
+repository = "https://github.com/Vaiz/nfs3"
+license = "Unlicense"
+
+[workspace.dependencies]
+nfs3_macros = { path = "vendor/nfs3_macros" }
+nfs3_types = { path = "vendor/nfs3_types" }
+anyhow = "1.0"
+filetime = "0.2"
+intaglio = "1.10"
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = "3.0.3"
+tokio = { version = "1.44", default-features = false }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+[workspace.lints.clippy]
+unwrap_used = "warn"
+
+[dependencies]
+anyhow = "1.0"
+cap-std = "3.4"
+cap-fs-ext = "3.4"
+ipnet = "2.11"
+nfs3_server = { path = "vendor/nfs3_server" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.44", features = ["rt-multi-thread", "macros", "sync", "time", "signal", "net"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = [
+  "Win32_Foundation", "Win32_Graphics_Gdi", "Win32_System_LibraryLoader",
+  "Win32_System_Memory", "Win32_System_Com", "Win32_System_DataExchange",
+  "Win32_System_Threading", "Win32_UI_WindowsAndMessaging", "Win32_UI_Controls",
+  "Win32_UI_Shell", "Win32_UI_Shell_Common", "Win32_UI_Input_KeyboardAndMouse",
+  "Win32_UI_HiDpi", "Win32_Storage_FileSystem"
+] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+opt-level = "s"
+lto = "thin"
+strip = true
+codegen-units = 1
+
+[[bin]]
+name = "rustnfsd"
+path = "src/bin/rustnfsd.rs"
+
+[[bin]]
+name = "rustnfs-gui"
+path = "src/bin/rustnfs-gui.rs"

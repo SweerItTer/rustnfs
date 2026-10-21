@@ -1,0 +1,49 @@
+{
+  "tested_at_utc": "2026-10-20T10:46:45.254323+00:00",
+  "environment": "Wine + Xvfb; not physical Windows",
+  "executables": {
+    "rustnfs-gui.exe": {
+      "source": "/tmp/rustnfs-win-target/x86_64-pc-windows-gnu/release/rustnfs-gui.exe",
+      "sha256": "fd29da51a1e35ec4ea78e489e5cbdcdf8207e41b5dbec29cbbcbcff1d259c125",
+      "bytes": 559616
+    },
+    "rustnfsd.exe": {
+      "source": "/tmp/rustnfs-win-target/x86_64-pc-windows-gnu/release/rustnfsd.exe",
+      "sha256": "0f9341c3a691bcf2ba7e2ac5eb95d8c097b4de2a703fe026b3047645c69a7afa",
+      "bytes": 1633792
+    }
+  },
+  "checks": [
+    {
+      "stage": "configure",
+      "code": 0,
+      "stdout": "CONFIG_OK\n",
+      "stderr": ""
+    },
+    {
+      "stage": "start",
+      "code": 0,
+      "stdout": "READY_OK\nCLIPBOARD_OK\n",
+      "stderr": ""
+    },
+    {
+      "stage": "stop",
+      "code": 0,
+      "stdout": "STOP_OK\n",
+      "stderr": ""
+    },
+    {
+      "stage": "close",
+      "code": 0,
+      "stdout": "CLOSE_SENT\n",
+      "stderr": ""
+    }
+  ],
+  "gui_exit_code": 0,
+  "closed_tcp_ports": [
+    13011,
+    13048,
+    13049
+  ],
+  "passed": true
+}

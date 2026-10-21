@@ -1,0 +1,14 @@
+# Build output at any directory depth.
+target/
+*.[eE][xX][eE]
+*.[zZ][iI][pP]
+
+# Python cache files.
+__pycache__/
+*.py[cod]
+
+# Temporary configuration writes and invalid-config backups.
+*.json.tmp
+*.json.invalid-*
+
+# Keep rustnfs.json, Cargo.lock, test reports, and license evidence tracked.

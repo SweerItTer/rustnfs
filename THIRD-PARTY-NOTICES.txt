@@ -1,0 +1,107 @@
+RustNFS 0.1.2 - Third-party notices
+Prepared: 2026-10-20
+Updated for RustNFS 0.1.2: 2026-10-21
+Original dependency evidence was collected on 2026-10-20; that collection date,
+dependency versions, and original third-party notices remain unchanged.
+
+SCOPE
+
+RustNFS-authored application code and documentation are distributed under the
+MIT License in the top-level LICENSE file. Third-party code retains its own
+license and copyright notices. The application-level MIT License does not
+replace the licenses of vendored source, dependencies, Unicode data, or runtime
+components.
+
+Keep this file, LICENSE, and the entire licenses/ directory with source and
+binary distributions. Original license and notice files under vendor/ are also
+preserved in the source distribution.
+
+VENDORED NFS IMPLEMENTATION
+
+Upstream project: https://github.com/Vaiz/nfs3
+Imported revision: f4c6abdcf9304299648681fe5a9fd9cfd6bcbee7
+Import record: vendor/UPSTREAM.txt
+
+nfs3_server 0.11.0
+  Declared license: BSD-3-Clause
+  Copyright (c) 2023, XetData
+  Full original text: vendor/nfs3_server/LICENSE
+  Distribution copy: licenses/crates/nfs3_server-0.11.0/LICENSE
+
+nfs3_types 0.5.2 and nfs3_macros 0.5.0
+  Declared license: Unlicense
+  Full original texts: each vendor package's LICENSE.txt
+  Distribution copies: licenses/crates/nfs3_types-0.5.2/LICENSE.txt
+                        licenses/crates/nfs3_macros-0.5.0/LICENSE.txt
+
+These packages are locally modified. Changes include bounded TCP/UDP
+transports, export-aware MOUNT and portmapper handling, protocol input limits,
+and filesystem-interface/handler corrections. The patch scope is documented
+in docs/compatibility.md. No upstream author or company endorsement is claimed.
+
+CARGO DEPENDENCIES
+
+The complete name/version/license inventory is provided in:
+
+  licenses/README.md
+  licenses/dependency-inventory.csv
+  licenses/dependency-inventory.json
+
+It contains 61 distinct third-party name/version pairs across the locked
+Windows x86-64 GNU and Linux x86-64 GNU non-dev dependency graphs. Each graph
+contains 55 packages. Normal and build dependencies are included, including
+procedural macros; dev-only dependencies are excluded. Inclusion in a build
+graph does not assert that a package contributes machine code to every binary.
+
+The declared license expressions come from the local Cargo package manifests
+through cargo metadata --locked --offline. Verbatim Cargo.toml.evidence files,
+original license/copyright/notice files, registry package checksums, and
+SHA-256 hashes are included. No dependency license was inferred from its name.
+
+Where a package explicitly offers MIT as an alternative, this distribution
+uses that alternative together with any mandatory AND terms and separately
+applicable file/data notices. All supplied original license alternatives are
+nevertheless retained. In particular:
+
+  - unicode-ident: (MIT OR Apache-2.0) AND Unicode-3.0; the Unicode term is
+    mandatory, and the original LICENSE-UNICODE is included.
+  - regex-syntax: its nested src/unicode_tables/LICENSE-UNICODE data notice is
+    included in addition to the package-level MIT OR Apache-2.0 declaration.
+  - tracing-core: its nested src/spin/LICENSE is included.
+  - winx: Apache-2.0 WITH LLVM-exception; no MIT alternative is asserted.
+  - nfs3_server: BSD-3-Clause; its copyright, conditions, and disclaimer remain
+    applicable to the upstream source and derivatives.
+
+STANDARD LIBRARY AND GNU WINDOWS RUNTIME
+
+Cargo metadata does not inventory the Rust standard library or the external
+Windows GNU runtime. Relevant notices shipped locally with the build tools
+are supplied separately:
+
+  licenses/runtime/rust-1.99.1/COPYRIGHT
+  licenses/runtime/rust-1.99.1/LICENSE-MIT
+  licenses/runtime/rust-1.99.1/LICENSE-APACHE
+  licenses/runtime/rust-1.99.1/COPYRIGHT-library.html
+  licenses/runtime/rust-1.99.1/licenses/
+  licenses/runtime/mingw/
+
+The Rust Standard Library generally offers MIT or Apache-2.0, with the
+additional per-component notices recorded in its original COPYRIGHT-library
+document. That complete document, rather than a simplified blanket license
+claim, is retained here.
+
+The MinGW-w64 and GCC package copyright documents contain per-file terms,
+public-domain notices, and applicable runtime exceptions. They also describe
+components of the toolchain beyond this application. Their presence does not
+mean the GCC compiler is redistributed with RustNFS or that RustNFS-authored
+code is licensed under the compiler's GPL terms. Source package versions and
+original notice-file hashes are in dependency-inventory.json.
+
+BUILD SNAPSHOT
+
+Application: RustNFS 0.1.2
+Compiler: rustc 1.99.1 (58cf8f9c3 2026-10-13)
+Targets inventoried: x86_64-pc-windows-gnu; x86_64-unknown-linux-gnu
+The exact Cargo.lock SHA-256 is recorded in licenses/dependency-inventory.json.
+Refresh this inventory when changing dependencies, features, targets, or
+runtime/toolchain versions.

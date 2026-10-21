@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "suite": "windows-port-conflict",
+  "version": "0.1.2",
+  "timestamp_utc": "2026-10-21T02:26:38.502795+00:00",
+  "environment": {
+    "host_platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "native_windows": false,
+    "execution": "Windows x64 GNU executable under Wine on Linux",
+    "wine_version": "wine-9.0 (Ubuntu 9.0~repack-4build3)"
+  },
+  "executable": {
+    "path": "/tmp/rustnfs-win-target/x86_64-pc-windows-gnu/release/rustnfsd.exe",
+    "sha256": "4155fafef686f820d63069a3d708cbc47974ccf0a9db176e63696433951ee1a6"
+  },
+  "config": {
+    "bind_address": "127.0.0.1",
+    "portmap_port": 35751,
+    "mount_port": 43717,
+    "nfs_port": 47085,
+    "allowed_clients": [
+      "127.0.0.1/32"
+    ],
+    "exports": [
+      {
+        "name": "test",
+        "path": "Z:\\tmp\\rustnfs-v012-port-conflict-tb5zdp38\\share",
+        "read_only": false,
+        "uid": 0,
+        "gid": 0,
+        "file_mode": 493,
+        "dir_mode": 493
+      }
+    ],
+    "max_connections": 32
+  },
+  "occupied_socket": "NFS UDP 127.0.0.1:47085",
+  "command": [
+    "/usr/lib/wine/wine64",
+    "/tmp/rustnfs-win-target/x86_64-pc-windows-gnu/release/rustnfsd.exe",
+    "--config",
+    "Z:\\tmp\\rustnfs-v012-port-conflict-tb5zdp38\\conflict.json"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "RUSTNFS_ERROR: 服务启动失败；端口被占用时，请停止占用程序，或在“连接设置”中修改对应端口: NFS UDP 127.0.0.1:47085 端口已被占用：OS Error 10048 (FormatMessageW() returned error 317) (os error 10048)\n",
+  "released_listeners": [
+    "TCP 127.0.0.1:35751",
+    "UDP 127.0.0.1:35751",
+    "TCP 127.0.0.1:43717",
+    "UDP 127.0.0.1:43717",
+    "TCP 127.0.0.1:47085"
+  ],
+  "checks": {
+    "exit_code_is_1": true,
+    "exact_custom_nfs_udp_endpoint": true,
+    "port_in_use_reason": true,
+    "original_windows_error_10048": true,
+    "no_ready_on_partial_start": true,
+    "all_five_partial_listeners_released": true
+  },
+  "passed": true
+}

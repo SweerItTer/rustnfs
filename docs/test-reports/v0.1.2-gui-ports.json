@@ -1,0 +1,116 @@
+{
+  "suite": "windows-gui-ports-acceptance",
+  "version": "0.1.2",
+  "timestamp_utc": "2026-10-21T02:29:21.608781+00:00",
+  "execution": "Windows x64 EXEs in Wine 9 / Xvfb on Linux; not native Windows",
+  "checks": [
+    {
+      "name": "load_existing_custom_ports",
+      "status": "pass",
+      "values": [
+        "16011",
+        "16048",
+        "16049"
+      ]
+    },
+    {
+      "name": "preview_and_clipboard_use_unsaved_ports",
+      "status": "pass",
+      "preview": "mkdir -p /mnt/nfs\r\nmount -t nfs -o vers=3,tcp,mountproto=tcp,nolock,port=16149,mountport=16148,rsize=8192,wsize=8192 127.0.0.1:/qa /mnt/nfs",
+      "copied": {
+        "tcp": "mkdir -p /mnt/nfs\r\nmount -t nfs -o vers=3,tcp,mountproto=tcp,nolock,port=16149,mountport=16148,rsize=8192,wsize=8192 127.0.0.1:/qa /mnt/nfs",
+        "udp": "mkdir -p /mnt/nfs\r\nmount -t nfs -o vers=3,udp,mountproto=udp,nolock,port=16149,mountport=16148,rsize=8192,wsize=8192 127.0.0.1:/qa /mnt/nfs"
+      }
+    },
+    {
+      "name": "save_and_reload_custom_ports",
+      "status": "pass"
+    },
+    {
+      "name": "restore_defaults_only_changes_ports",
+      "status": "pass",
+      "values": [
+        111,
+        20048,
+        2049
+      ]
+    },
+    {
+      "name": "reject_empty",
+      "status": "pass",
+      "message": "\nNFS 端口不能为空，请填写 1–65535。"
+    },
+    {
+      "name": "reject_zero",
+      "status": "pass",
+      "message": "\nNFS 端口必须在 1–65535 之间。"
+    },
+    {
+      "name": "reject_above_maximum",
+      "status": "pass",
+      "message": "\nNFS 端口必须在 1–65535 之间。"
+    },
+    {
+      "name": "reject_not_integer",
+      "status": "pass",
+      "message": "\nNFS 端口只能填写数字，范围为 1–65535。"
+    },
+    {
+      "name": "reject_duplicate",
+      "status": "pass",
+      "message": "\nPortmapper 和 NFS 端口重复（111），请使用不同端口。"
+    },
+    {
+      "name": "start_real_backend_on_edited_ports_and_lock_settings",
+      "status": "pass",
+      "ports": [
+        16111,
+        16148,
+        16149
+      ],
+      "transports": [
+        "TCP",
+        "UDP"
+      ]
+    },
+    {
+      "name": "stop_unlocks_settings_and_releases_ports",
+      "status": "pass"
+    },
+    {
+      "name": "minimum_window_contains_new_controls",
+      "status": "pass",
+      "rect": [
+        0,
+        0,
+        840,
+        780
+      ]
+    },
+    {
+      "name": "invalid_close_can_cancel_or_discard_without_overwriting_config",
+      "status": "pass"
+    }
+  ],
+  "screenshots": {
+    "ports-loaded": "../screenshots/v0.1.2-ports-loaded.png",
+    "ports-running": "../screenshots/v0.1.2-ports-running.png",
+    "ports-minimum-size": "../screenshots/v0.1.2-ports-minimum-size.png"
+  },
+  "executables": {
+    "rustnfs-gui.exe": {
+      "sha256": "d51de887b17c5d3ab41f838848519e6395dc719ee07aed5f673e0a924501851f"
+    },
+    "rustnfsd.exe": {
+      "sha256": "4155fafef686f820d63069a3d708cbc47974ccf0a9db176e63696433951ee1a6"
+    }
+  },
+  "running_log": "已读取 rustnfs.json。\r\n端口已恢复为 111 / 20048 / 2049；点击“保存设置”或“启动服务”后生效。\r\n设置已保存。端口：Portmapper 111 / MOUNT 20048 / NFS 2049。\r\n正在启动服务，等待全部端口监听成功…\r\n2026-10-21T02:29:44.272022Z  INFO NFSv3 listeners ready ports=ServerPorts { portmap_port: 16111, mount_port: 16148, nfs_port: 16149 }\r\n服务已就绪。可在开发板执行上面的挂载命令。\r\nRUSTNFS_READY\r\nRustNFS 0.1.2 | NFSv3 TCP/UDP | 127.0.0.1\r\n监听端口（TCP/UDP）：Portmapper 16111 | MOUNT 16148 | NFS 16149\r\n/qa -> Z:\\tmp\\rustnfs-v012-gui-test\\share [读写]",
+  "passed": 13,
+  "failed": 0,
+  "screenshot_capture_paths": {
+    "ports-loaded": "/tmp/rustnfs-v012-gui-test/ports-loaded.png",
+    "ports-running": "/tmp/rustnfs-v012-gui-test/ports-running.png",
+    "ports-minimum-size": "/tmp/rustnfs-v012-gui-test/ports-minimum-size.png"
+  }
+}

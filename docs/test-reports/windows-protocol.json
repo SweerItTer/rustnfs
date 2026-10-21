@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "suite": "independent-nfsv3-protocol-smoke",
+  "run_id": "deab154dc687",
+  "host": "127.0.0.1",
+  "profile": {
+    "windows_case_rename": true,
+    "exclusive_create": "unsupported",
+    "max_record_bytes": 2097152
+  },
+  "ports": {
+    "portmapper": 12011,
+    "mount": 12048,
+    "nfs": 12049
+  },
+  "passed": 35,
+  "failed": 2,
+  "duration_seconds": 21.149,
+  "tests": [
+    {
+      "transport": "tcp",
+      "name": "portmapper.discovery",
+      "status": "pass",
+      "detail": {
+        "registered_mappings": 6
+      },
+      "duration_ms": 19.06
+    },
+    {
+      "transport": "tcp",
+      "name": "mount.exports_and_root",
+      "status": "pass",
+      "detail": {
+        "exports": [
+          "/readonly",
+          "/share"
+        ]
+      },
+      "duration_ms": 17.14
+    },
+    {
+      "transport": "tcp",
+      "name": "read.existing_fixtures",
+      "status": "pass",
+      "duration_ms": 57.79
+    },
+    {
+      "transport": "tcp",
+      "name": "setup.owned_directory",
+      "status": "pass",
+      "duration_ms": 29.98
+    },
+    {
+      "transport": "tcp",
+      "name": "files.binary_roundtrip_and_commit",
+      "status": "pass",
+      "detail": {
+        "bytes": 195334,
+        "sha256": "4f7cbb80b96c4f570a59521ec335b508a62b16c24fa44489e0bbe39e5ede56cc",
+        "chunk_bytes": 8192
+      },
+      "duration_ms": 690.87
+    },
+    {
+      "transport": "tcp",
+      "name": "filesystem.access_space_pathconf_and_io_limits",
+      "status": "pass",
+      "duration_ms": 20.72
+    },
+    {
+      "transport": "tcp",
+      "name": "files.eof_zero_length_durability_truncate",
+      "status": "pass",
+      "duration_ms": 185.34
+    },
+    {
+      "transport": "tcp",
+      "name": "files.unicode_empty_and_create_modes",
+      "status": "pass",
+      "duration_ms": 102.26
+    },
+    {
+      "transport": "tcp",
+      "name": "files.rename_parent_and_stale_identity",
+      "status": "pass",
+      "duration_ms": 365.98
+    },
+    {
+      "transport": "tcp",
+      "name": "directories.move_replace_rmdir_with_existing_handles",
+      "status": "fail",
+      "error": "AssertionError: rename directory over an existing empty directory: expected OK, got ACCES",
+      "duration_ms": 530.74
+    },
+    {
+      "transport": "tcp",
+      "name": "atomicity.rejected_create_and_mkdir_attributes_leave_no_objects",
+      "status": "pass",
+      "detail": {
+        "rejections_without_residual_objects": 10,
+        "cases": [
+          {
+            "operation": "CREATE",
+            "attributes": "unmapped-uid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "unmapped-gid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "invalid-atime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "invalid-mtime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "unrepresentable-size",
+            "outcome": "FBIG",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "unmapped-uid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "unmapped-gid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "invalid-atime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "invalid-mtime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "unrepresentable-size",
+            "outcome": "FBIG",
+            "left_object": false
+          }
+        ]
+      },
+      "duration_ms": 317.03
+    },
+    {
+      "transport": "tcp",
+      "name": "windows.case_variant_rename_preserves_existing_handles",
+      "status": "pass",
+      "duration_ms": 517.33
+    },
+    {
+      "transport": "tcp",
+      "name": "exports.readonly_mutations_denied",
+      "status": "pass",
+      "duration_ms": 28.16
+    },
+    {
+      "transport": "tcp",
+      "name": "directories.pagination_cookies_and_limits",
+      "status": "pass",
+      "detail": {
+        "readdir_pages": 5,
+        "readdirplus_pages": 24
+      },
+      "duration_ms": 5004.96
+    },
+    {
+      "transport": "tcp",
+      "name": "security.names_root_boundary_and_unknown_handle",
+      "status": "pass",
+      "detail": {
+        "rejected_names": 16
+      },
+      "duration_ms": 121.62
+    },
+    {
+      "transport": "tcp",
+      "name": "rpc.errors_truncated_xdr_and_allocation_claims",
+      "status": "pass",
+      "duration_ms": 16.87
+    },
+    {
+      "transport": "tcp",
+      "name": "rpc.tcp_fragments_and_coalesced_records",
+      "status": "pass",
+      "duration_ms": 43.6
+    },
+    {
+      "transport": "tcp",
+      "name": "rpc.tcp_record_size_limit",
+      "status": "pass",
+      "detail": {
+        "declared_bytes": 2097153,
+        "server_limit_bytes": 2097152
+      },
+      "duration_ms": 2.44
+    },
+    {
+      "transport": "tcp",
+      "name": "cleanup.owned_test_data",
+      "status": "pass",
+      "duration_ms": 3386.84
+    },
+    {
+      "transport": "udp",
+      "name": "portmapper.discovery",
+      "status": "pass",
+      "detail": {
+        "registered_mappings": 6
+      },
+      "duration_ms": 2.98
+    },
+    {
+      "transport": "udp",
+      "name": "mount.exports_and_root",
+      "status": "pass",
+      "detail": {
+        "exports": [
+          "/readonly",
+          "/share"
+        ]
+      },
+      "duration_ms": 11.37
+    },
+    {
+      "transport": "udp",
+      "name": "read.existing_fixtures",
+      "status": "pass",
+      "duration_ms": 42.9
+    },
+    {
+      "transport": "udp",
+      "name": "setup.owned_directory",
+      "status": "pass",
+      "duration_ms": 17.72
+    },
+    {
+      "transport": "udp",
+      "name": "files.binary_roundtrip_and_commit",
+      "status": "pass",
+      "detail": {
+        "bytes": 195334,
+        "sha256": "4f7cbb80b96c4f570a59521ec335b508a62b16c24fa44489e0bbe39e5ede56cc",
+        "chunk_bytes": 8192
+      },
+      "duration_ms": 675.52
+    },
+    {
+      "transport": "udp",
+      "name": "filesystem.access_space_pathconf_and_io_limits",
+      "status": "pass",
+      "duration_ms": 19.47
+    },
+    {
+      "transport": "udp",
+      "name": "files.eof_zero_length_durability_truncate",
+      "status": "pass",
+      "duration_ms": 145.18
+    },
+    {
+      "transport": "udp",
+      "name": "files.unicode_empty_and_create_modes",
+      "status": "pass",
+      "duration_ms": 97.48
+    },
+    {
+      "transport": "udp",
+      "name": "files.rename_parent_and_stale_identity",
+      "status": "pass",
+      "duration_ms": 324.71
+    },
+    {
+      "transport": "udp",
+      "name": "directories.move_replace_rmdir_with_existing_handles",
+      "status": "fail",
+      "error": "AssertionError: rename directory over an existing empty directory: expected OK, got ACCES",
+      "duration_ms": 588.79
+    },
+    {
+      "transport": "udp",
+      "name": "atomicity.rejected_create_and_mkdir_attributes_leave_no_objects",
+      "status": "pass",
+      "detail": {
+        "rejections_without_residual_objects": 10,
+        "cases": [
+          {
+            "operation": "CREATE",
+            "attributes": "unmapped-uid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "unmapped-gid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "invalid-atime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "invalid-mtime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "CREATE",
+            "attributes": "unrepresentable-size",
+            "outcome": "FBIG",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "unmapped-uid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "unmapped-gid",
+            "outcome": "PERM",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "invalid-atime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "invalid-mtime-nsec",
+            "outcome": "INVAL",
+            "left_object": false
+          },
+          {
+            "operation": "MKDIR",
+            "attributes": "unrepresentable-size",
+            "outcome": "FBIG",
+            "left_object": false
+          }
+        ]
+      },
+      "duration_ms": 192.6
+    },
+    {
+      "transport": "udp",
+      "name": "windows.case_variant_rename_preserves_existing_handles",
+      "status": "pass",
+      "duration_ms": 462.08
+    },
+    {
+      "transport": "udp",
+      "name": "exports.readonly_mutations_denied",
+      "status": "pass",
+      "duration_ms": 24.61
+    },
+    {
+      "transport": "udp",
+      "name": "directories.pagination_cookies_and_limits",
+      "status": "pass",
+      "detail": {
+        "readdir_pages": 5,
+        "readdirplus_pages": 24
+      },
+      "duration_ms": 3260.67
+    },
+    {
+      "transport": "udp",
+      "name": "security.names_root_boundary_and_unknown_handle",
+      "status": "pass",
+      "detail": {
+        "rejected_names": 16
+      },
+      "duration_ms": 95.59
+    },
+    {
+      "transport": "udp",
+      "name": "rpc.errors_truncated_xdr_and_allocation_claims",
+      "status": "pass",
+      "duration_ms": 5.82
+    },
+    {
+      "transport": "udp",
+      "name": "rpc.udp_duplicate_create_remove_rename",
+      "status": "pass",
+      "duration_ms": 280.59
+    },
+    {
+      "transport": "udp",
+      "name": "cleanup.owned_test_data",
+      "status": "pass",
+      "duration_ms": 3440.92
+    }
+  ],
+  "server_platform": "windows_under_wine",
+  "server_binary_sha256": "0f9341c3a691bcf2ba7e2ac5eb95d8c097b4de2a703fe026b3047645c69a7afa",
+  "wine_version": "wine-9.0 (Ubuntu 9.0~repack-4build3)"
+}

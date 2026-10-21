@@ -1,0 +1,24 @@
+[package]
+name = "nfs3_macros"
+version = "0.5.0"
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+license.workspace = true
+description = "A Rust library providing a derive macro for XDR codec implementation."
+readme = "README.md"
+exclude = ["tests/*"]
+keywords = ["xdr", "rfc1014"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2.workspace = true
+quote.workspace = true
+syn.workspace = true
+
+[lints]
+workspace = true

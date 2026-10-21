@@ -1,0 +1,5 @@
+Source: https://github.com/Vaiz/nfs3
+Commit: f4c6abdcf9304299648681fe5a9fd9cfd6bcbee7
+Imported: 2026-10-20
+Crates: nfs3_server (BSD-3-Clause), nfs3_types and nfs3_macros (Unlicense).
+Local changes are described in docs/PROTOCOL-NOTES.md.

@@ -1,0 +1,15 @@
+Rust std/Win32 directory rename probe; root=Z:\tmp\rustnfs-rename-probe-data-1792493015367099600
+std_new_destination: OK
+  source_exists=false destination_exists=true source_payload=false destination_payload=true
+std_replace_empty_destination: ERROR kind=PermissionDenied raw_os_error=Some(5) message=Access denied. (os error 5)
+  source_exists=true destination_exists=true source_payload=true destination_payload=false
+std_new_destination_with_pins: OK
+  source_exists=false destination_exists=true source_payload=false destination_payload=true
+std_replace_empty_destination_with_pins: ERROR kind=PermissionDenied raw_os_error=Some(5) message=Access denied. (os error 5)
+  source_exists=true destination_exists=true source_payload=true destination_payload=false
+FileRenameInfo_class3_new_destination: OK
+  source_exists=false destination_exists=true source_payload=false destination_payload=true
+FileRenameInfoEx_class22_new_destination: ERROR kind=InvalidInput raw_os_error=Some(87) message=Invalid parameter. (os error 87)
+  source_exists=true destination_exists=false source_payload=true destination_payload=false
+FileRenameInfoEx_class22_replace_empty_destination: ERROR kind=InvalidInput raw_os_error=Some(87) message=Invalid parameter. (os error 87)
+  source_exists=true destination_exists=true source_payload=true destination_payload=false

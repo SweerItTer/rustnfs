@@ -1,0 +1,78 @@
+{
+  "client": "libnfs",
+  "version": "5.0.2",
+  "server_platform": "linux",
+  "server_binary_sha256": "548576d01a9ef8e53c4bbe024a78df56981032bf82471b2cad6b9f1bf8628a5e",
+  "checks": {
+    "list_exit_ok": true,
+    "list_contains_fixture": true,
+    "fixture_bytes_exact": true,
+    "upload_ok": true,
+    "download_ok": true,
+    "sha256_equal": true,
+    "readonly_denied": true
+  },
+  "passed": true,
+  "bytes": 164116,
+  "sha256": "388b94bb0af0d99cb5e8548dab81dcd36e920f08ec6af19a2d7e9de1db893a4d",
+  "commands": [
+    {
+      "name": "list_export",
+      "argv": [
+        "nfs-ls",
+        "nfs://127.0.0.1/share/?version=3&nfsport=12049&mountport=12048&uid=0&gid=0&timeo=10&retrans=1"
+      ],
+      "exit_code": 0,
+      "stdout": "-rwxr-xr-x  1     0     0           16 fixture.txt\n",
+      "stderr": "",
+      "duration_ms": 5.42
+    },
+    {
+      "name": "read_fixture",
+      "argv": [
+        "nfs-cat",
+        "nfs://127.0.0.1/share/fixture.txt?version=3&nfsport=12049&mountport=12048&uid=0&gid=0&timeo=10&retrans=1"
+      ],
+      "exit_code": 0,
+      "stdout": "RustNFS fixture\n",
+      "stderr": "",
+      "duration_ms": 6.3
+    },
+    {
+      "name": "upload",
+      "argv": [
+        "nfs-cp",
+        "/tmp/rustnfs-test/libnfs-input-243fe0f0c7.bin",
+        "nfs://127.0.0.1/share/libnfs-roundtrip-243fe0f0c7.bin?version=3&nfsport=12049&mountport=12048&uid=0&gid=0&timeo=10&retrans=1"
+      ],
+      "exit_code": 0,
+      "stdout": "copied 164116 bytes\n",
+      "stderr": "",
+      "duration_ms": 33.37
+    },
+    {
+      "name": "download",
+      "argv": [
+        "nfs-cp",
+        "nfs://127.0.0.1/share/libnfs-roundtrip-243fe0f0c7.bin?version=3&nfsport=12049&mountport=12048&uid=0&gid=0&timeo=10&retrans=1",
+        "/tmp/rustnfs-test/libnfs-output-243fe0f0c7.bin"
+      ],
+      "exit_code": 0,
+      "stdout": "copied 164116 bytes\n",
+      "stderr": "",
+      "duration_ms": 7.03
+    },
+    {
+      "name": "readonly_upload_denied",
+      "argv": [
+        "nfs-cp",
+        "/tmp/rustnfs-test/libnfs-input-243fe0f0c7.bin",
+        "nfs://127.0.0.1/readonly/libnfs-roundtrip-243fe0f0c7.bin?version=3&nfsport=12049&mountport=12048&uid=0&gid=0&timeo=10&retrans=1"
+      ],
+      "exit_code": 10,
+      "stdout": "",
+      "stderr": "Failed to creat file /libnfs-roundtrip-243fe0f0c7.bin: creat call failed with \"NFS: CREATE of /libnfs-roundtrip-243fe0f0c7.bin failed with NFS3ERR_ROFS(-30)\"\nFailed to open nfs://127.0.0.1/readonly/libnfs-roundtrip-243fe0f0c7.bin?version=3&nfsport=12049&mountport=12048&uid=0&gid=0&timeo=10&retrans=1\n",
+      "duration_ms": 4.1
+    }
+  ]
+}

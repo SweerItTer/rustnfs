@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "suite": "windows-user-config-startup-check",
+  "timestamp_utc": "2026-10-21T02:01:53.698030+00:00",
+  "environment": {
+    "host_platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "execution": "Windows x86_64 GNU executable under Wine on Linux",
+    "native_windows": false,
+    "wine_version": "wine-9.0 (Ubuntu 9.0~repack-4build3)",
+    "wine_prefix": "/tmp/rustnfs-v011-wine",
+    "wine_arch": "win64",
+    "wine_debug": "-all",
+    "wine_dll_overrides": "mscoree,mshtml="
+  },
+  "executable": {
+    "path": "/tmp/rustnfs-win-target/x86_64-pc-windows-gnu/release/rustnfsd.exe",
+    "sha256": "300de6623b50074440877adaef69199456ce5e84cb5cd9a68f22be8fa41df4e8",
+    "version_stdout": "RustNFS 0.1.1 | NFSv3 TCP/UDP\n",
+    "version_stderr": "",
+    "version_exit_code": 0
+  },
+  "config": {
+    "bind_address": "0.0.0.0",
+    "portmap_port": 111,
+    "mount_port": 20048,
+    "nfs_port": 2049,
+    "allowed_clients": [
+      "10.0.0.1/8"
+    ],
+    "exports": [
+      {
+        "name": "nfs",
+        "path": "C:\\nfs",
+        "read_only": false,
+        "uid": 0,
+        "gid": 0,
+        "file_mode": 493,
+        "dir_mode": 493
+      }
+    ],
+    "max_connections": 32
+  },
+  "command": [
+    "/usr/lib/wine/wine64",
+    "/tmp/rustnfs-win-target/x86_64-pc-windows-gnu/release/rustnfsd.exe",
+    "--config",
+    "Z:\\tmp\\rustnfs-v011-windows-test\\user-startup-check.json",
+    "--check"
+  ],
+  "network_listening_requested": false,
+  "exit_code": 0,
+  "stdout": "配置有效：1 个共享目录\n",
+  "stderr": "",
+  "passed": true
+}

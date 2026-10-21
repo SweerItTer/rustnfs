@@ -1,0 +1,9 @@
+{
+  "bind_address": "0.0.0.0",
+  "portmap_port": 111,
+  "mount_port": 20048,
+  "nfs_port": 2049,
+  "allowed_clients": ["127.0.0.1/32"],
+  "exports": [],
+  "max_connections": 32
+}

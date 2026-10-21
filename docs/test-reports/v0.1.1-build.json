@@ -1,0 +1,44 @@
+{
+  "application": "RustNFS",
+  "version": "0.1.1",
+  "date_utc": "2026-10-21",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-unknown-linux-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "target": "x86_64-pc-windows-gnu",
+  "profile": "release",
+  "upstream_nfs3_commit": "f4c6abdcf9304299648681fe5a9fd9cfd6bcbee7",
+  "executables": {
+    "rustnfsd.exe": {
+      "bytes": 1640960,
+      "sha256": "300de6623b50074440877adaef69199456ce5e84cb5cd9a68f22be8fa41df4e8",
+      "imported_dlls": [
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "kernel32.dll",
+        "msvcrt.dll",
+        "ntdll.dll",
+        "ws2_32.dll"
+      ],
+      "imports_reopenfile": false,
+      "imports_getfinalpathnamebyhandlew": true
+    },
+    "rustnfs-gui.exe": {
+      "bytes": 559616,
+      "sha256": "8b90f6a77ea9d96fbe99f40fe7850f329bf02de3cf37ba08c00211e89cb03034",
+      "imported_dlls": [
+        "api-ms-win-core-synch-l1-2-0.dll",
+        "bcryptprimitives.dll",
+        "combase.dll",
+        "comctl32.dll",
+        "gdi32.dll",
+        "kernel32.dll",
+        "msvcrt.dll",
+        "ntdll.dll",
+        "ole32.dll",
+        "shell32.dll",
+        "user32.dll",
+        "ws2_32.dll"
+      ]
+    }
+  },
+  "cargo_lock_sha256": "432859137f80b59af126791b952330c18c629dd65e6a7f07596be713cdf131b0"
+}
